@@ -49,6 +49,14 @@ const Category = () => {
                     <img src={slide5} alt="" />
                     <h3 className="text-3xl text-center uppercase -mt-14 text-white">Salad</h3>
                 </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slide5} alt="" />
+                    <h3 className="text-3xl text-center uppercase -mt-14 text-white">Salad</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slide5} alt="" />
+                    <h3 className="text-3xl text-center uppercase -mt-14 text-white">Salad</h3>
+                </SwiperSlide>
             </Swiper>
         </section>
     );

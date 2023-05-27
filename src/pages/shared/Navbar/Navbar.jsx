@@ -1,35 +1,42 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
-    const {user,logOut} = useContext(AuthContext);
-    const handleLogout = ()=>{
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout = () => {
         logOut()
-        .then(()=>{})
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(() => { })
+            .catch(error => {
+                console.log(error);
+            })
     }
     const navOptions = <>
-            <li><Link TO='/'>HOME</Link></li>
-            <li><Link to='/menu'>OUR MENU</Link></li>
-            <li><Link to='/order/salad'>ORDER FOOD</Link></li>
-            <li><Link to='/secret'>SECRET</Link></li>
-            
-            {
-                user? <div>
-                    <span>{user?.displayName}</span>
-                      <button onClick={handleLogout} className="btn btn-ghost">LOGOUT</button>
-                </div>: 
+        <li><Link TO='/'>HOME</Link></li>
+        <li><Link to='/menu'>OUR MENU</Link></li>
+        <li><Link to='/order/salad'>ORDER FOOD</Link></li>
+        <li><Link to='/secret'>SECRET</Link></li>
+        <li><Link to='/'>
+            <button className="btn gap-2">
+            <FaShoppingCart />
+                <div className="badge badge-secondary">+0</div>
+            </button>
+        </Link></li>
+
+        {
+            user ? <div>
+                <span>{user?.displayName}</span>
+                <button onClick={handleLogout} className="btn btn-ghost">LOGOUT</button>
+            </div> :
                 <div>
                     <li><Link to='/login'>LOGIN</Link></li>
                 </div>
-            }
-           
-        </>
+        }
 
-        return (
+    </>
+
+    return (
         <>
             <div className="navbar fixed z-10 opacity-80 bg-slate-600  text-white max-w-screen-xl mx-auto">
                 <div className="navbar-start">
@@ -53,7 +60,7 @@ const Navbar = () => {
                 </div>
             </div>
         </>
-        );
+    );
 };
 
-        export default Navbar;
+export default Navbar;

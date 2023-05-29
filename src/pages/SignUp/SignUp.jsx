@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -111,6 +112,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className='ml-9 font-bold'><small>Already have an account?   <Link to='/login'>LOGIN</Link> </small></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

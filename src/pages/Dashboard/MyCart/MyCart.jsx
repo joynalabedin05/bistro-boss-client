@@ -1,12 +1,42 @@
 import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/UseCart";
 import { FaTrashAlt } from 'react-icons/fa';
+import Swal from "sweetalert2";
 
 const MyCart = () => {
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
     const total = cart.reduce((sum, item) => item.price + sum, 0);
+
+    const handleDelete = (item)=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+             fetch(`http://localhost:5000/carts/${item._id}`,{
+                method:'DELETE', 
+             })
+             .then(res=>res.json())
+             .then(data=>{
+                if(data.deletedCount>0){
+                    refetch();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+                }
+             })
+            }
+          })
+    }
     return (
-        <div className="">
+        <div className="w-full mx-auto">
             <Helmet>
                 <title>Bistro Boss | My cart</title>
             </Helmet>
@@ -48,7 +78,7 @@ const MyCart = () => {
                                 </td>
                                 <td>${item.price}</td>
                                 <td>
-                                    <button className="btn btn-ghost btn-lg bg-red-600 text-white"><FaTrashAlt /></button>
+                                    <button onClick={()=>handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt /></button>
                                 </td>
                             </tr>)
                         }

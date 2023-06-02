@@ -4,7 +4,7 @@ import MenuItem from "../../shared/MenuItem/MenuItem";
 import UseMenu from "../../../hooks/UseMenu";
 
 const PopularMenu = () => {
-    const {menu} = UseMenu();
+    const [menu] = UseMenu();
     const popular = menu.filter(item=>item.category==='popular')
     
     return (

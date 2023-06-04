@@ -20,14 +20,14 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 bg-[#D1A054]">
                     {
                         isAdmin ? <>
-                            <li><NavLink to='/dashboard/home'><FaHome />Admin Home</NavLink></li>
+                            <li><NavLink to='/'><FaHome />Admin Home</NavLink></li>
                             <li><NavLink to='/dashboard/addItem'><FaUtensils /> Add Items</NavLink></li>
                             
                             <li>
                                 <NavLink to='/dashboard/manageitems'><FaWallet /> Manage Items</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/history'><FaBook /> Manage Bkooings</NavLink>
+                                <NavLink to='/'><FaBook /> Manage Bkooings</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/allusers'><FaUsers /> All Users</NavLink>
@@ -36,14 +36,14 @@ const Dashboard = () => {
                         </> :
 
                             <>
-                                <li><NavLink to='/dashboard/home'><FaHome />User Home</NavLink></li>
-                                <li><NavLink to='/dashboard/reservations'><FaCalendarAlt /> Reservations</NavLink></li>
+                                <li><NavLink to='/'><FaHome />User Home</NavLink></li>
+                                <li><NavLink to='/'><FaCalendarAlt /> Reservations</NavLink></li>
                                 <li>
                                     <NavLink to='/dashboard/mycart'><FaShoppingCart /> My Cart <span className="badge badge-secondary">{cart?.length || 0}</span></NavLink>
 
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/history'><FaWallet /> Payment History</NavLink>
+                                    <NavLink to='/'><FaWallet /> Payment History</NavLink>
                                 </li>
                             </>
                     }
